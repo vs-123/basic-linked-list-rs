@@ -12,6 +12,7 @@ impl LinkedList {
     }
 
     fn from_vec(vec: Vec<u32>) -> Self {
+        if vec.is_empty() {panic!("Empty vectors not supported");}
         let mut output = Self::new(vec[0]);
         if vec.len() == 1 {return output;}
         output.next = Some(Box::new(Self::from_vec(vec[1..].to_vec())));
